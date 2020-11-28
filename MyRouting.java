@@ -1,10 +1,10 @@
 /*******************
 
 There are some print statements that can help understand what is going on
-on line 147 there are prints to show what the links found look like from the Link Discovery Service
-on line 288 there are prints to show what the shortest path from the source switch
+on line 141 there are prints to show what the links found look like from the Link Discovery Service
+on line 282 there are prints to show what the shortest path from the source switch
 to all other switches are using Dijkstra's algorithm 
-on line 321 there are prints to show what the link path used for creating new Routes to install
+on line 315 there are prints to show what the link path used for creating new Routes to install
 
 *******************/
 
