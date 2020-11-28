@@ -1,12 +1,10 @@
 /*******************
 
-Team members and IDs:
-Name1 ID1
-Name2 ID2
-Name3 ID3
-
-Github link:
-https://github.com/xxx/yyy
+There are some print statements that can help understand what is going on
+on line 147 there are prints to show what the links found look like from the Link Discovery Service
+on line 288 there are prints to show what the shortest path from the source switch
+to all other switches are using Dijkstra's algorithm 
+on line 321 there are prints to show what the link path used for creating new Routes to install
 
 *******************/
 
@@ -131,23 +129,19 @@ public class MyRouting implements IOFMessageListener, IFloodlightModule {
 	@Override
 	public net.floodlightcontroller.core.IListener.Command receive(
 			IOFSwitch sw, OFMessage msg, FloodlightContext cntx) {
-
-
+		
 		// Print the topology if not yet.
 		if (!printedTopo) {
 			System.out.println("*** Print topology");
 			
 			// For each switch, print its neighbor switches.
 			
-			
-			
 			for(NodePortTuple node : linkProvider.getPortLinks().keySet())
 			{
-				/* Testing info */ 
+				/* Testing info 
 				System.out.println(node.toString());
 				System.out.println(linkProvider.getPortLinks().get(node));
-				
-				
+				*/
 				
 				Iterator<Link> it = linkProvider.getPortLinks().get(node).iterator();
 				while(it.hasNext())
@@ -216,9 +210,7 @@ public class MyRouting implements IOFMessageListener, IFloodlightModule {
 	        //no rules state this, it is just a noticeable pattern and since there are only 4 hosts and 4 switches
 	        //we will assume for now that all switches are tied to one host and we can get this from the MAC address
 	        
-	        
 	        String pathRoute = calculateRoute(eth.getSourceMAC().toLong(), eth.getDestinationMAC().toLong());
-	        
 	        
 			Route route = getRoute(eth.getSourceMAC().toLong(), eth.getDestinationMAC().toLong(), pathRoute);
 			StringBuilder sb = new StringBuilder(pathRoute);
@@ -262,7 +254,6 @@ public class MyRouting implements IOFMessageListener, IFloodlightModule {
 			seen.add(min);
 			
 			//update all of the neighbors of min and set their new costs
-			
 			Iterator<Long> neis = topology.get(min).iterator();
 			
 			while(neis.hasNext())
